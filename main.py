@@ -1,17 +1,29 @@
 import requests
 
+
+def bring_animals_to_html(list_of_cards):
+    """here the placeholder is replaced by the actual new animal list created in building_all_cards"""
+    with open('animals_template.html',"r")as file:
+      page = file.read()
+    new_html=page.replace("__REPLACE_ANIMALS_INFO__", list_of_cards)
+    with open ("animals.html", "w") as file:
+        file.write(new_html)
+        return "animals.html"
+
+
+def errormassage(nonanimal):
+    output = ''
+    output += f'<h2>The animal "{nonanimal}" does not exist.</h2>\n'
+    print(bring_animals_to_html(output))
+
+
 headers = {'X-Api-Key':'ghXsb9qIIh5zbZmr8OPrsA==v6sOcmQJCGmeKR5T'}
-def load_data():
-    name =  input("Enter a name of an animal: ")
-    try:
-        url = f'https://api.api-ninjas.com/v1/animals?name={name}'
-        req =requests.get(url, headers = headers)
-        #res = requests.get(url_country_list)
-        return req.json()
-       # for index in range(0, len(req.json())-1):
-        #    print(req.json()[index])
-    except IndexError:
-        print(f"{name} is not in the database, please choos a nother one.")
+def load_data(name):
+    url = f'https://api.api-ninjas.com/v1/animals?name={name}'
+    req =requests.get(url, headers = headers)
+    #res = requests.get(url_country_list)#
+    return req.json()
+
 
 def seralize_animal(obj):
     """here every fox gets an own card written """
@@ -50,21 +62,16 @@ def building_all_cards(cards):
     return output
 
 
-def bring_animals_to_html(list_of_cards):
-    """here the placeholder is replaced by the actual new animal list created in building_all_cards"""
-    with open('animals_template.html',"r")as file:
-      page = file.read()
-    new_html=page.replace("__REPLACE_ANIMALS_INFO__", list_of_cards)
-    with open ("animals.html", "w") as file:
-        file.write(new_html)
-        return "animals.html"
-
-
 def main():
-    animals_data = load_data()
-    animal_on_card = building_all_cards(animals_data)
-    final_result = bring_animals_to_html(animal_on_card)
-    print("Website was successfully generated to the file animals.html.")
+    animal_name = input("Enter a name of an animal: ")
+    animals_data = load_data(animal_name)
+    if animals_data==[]:
+        errormassage(animal_name)
+        print(f"{animal_name} is not in the database.")
+    else:
+        animal_on_card = building_all_cards(animals_data)
+        bring_animals_to_html(animal_on_card)
+        print("Website was successfully generated to the file animals.html.")
 
 
 if __name__ == "__main__":
