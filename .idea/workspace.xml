@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d3d087-37d6-4ab9-bbdc-4a5bb1d32094" name="Changes" comment="" />
+    <list default="true" id="d6d3d087-37d6-4ab9-bbdc-4a5bb1d32094" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/animals_web_generator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_fetcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals.html" beforeDir="false" afterPath="$PROJECT_DIR$/animals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +33,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.animals_web_generator.executor": "Run",
+    "Python.data_fetcher.executor": "Run",
     "Python.main.executor": "Run",
     "Python.tryingthings.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",

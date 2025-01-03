@@ -1,4 +1,4 @@
-import requests
+import data_fetcher as d_f
 
 
 def bring_animals_to_html(list_of_cards):
@@ -15,14 +15,6 @@ def errormassage(nonanimal):
     output = ''
     output += f'<h2>The animal "{nonanimal}" does not exist.</h2>\n'
     print(bring_animals_to_html(output))
-
-
-headers = {'X-Api-Key':'ghXsb9qIIh5zbZmr8OPrsA==v6sOcmQJCGmeKR5T'}
-def load_data(name):
-    url = f'https://api.api-ninjas.com/v1/animals?name={name}'
-    req =requests.get(url, headers = headers)
-    #res = requests.get(url_country_list)#
-    return req.json()
 
 
 def seralize_animal(obj):
@@ -64,7 +56,7 @@ def building_all_cards(cards):
 
 def main():
     animal_name = input("Enter a name of an animal: ")
-    animals_data = load_data(animal_name)
+    animals_data = d_f.fetch_data(animal_name)
     if animals_data==[]:
         errormassage(animal_name)
         print(f"{animal_name} is not in the database.")
