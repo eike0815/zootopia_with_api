@@ -1,10 +1,11 @@
 import requests
 import os
 from dotenv import load_dotenv
+
+
 load_dotenv()
-
-
-headers = {'X-Api-Key':os.getenv('API_KEY')}
+API_KEY = os.getenv('API_KEY')
+headers = {'X-Api-Key': API_KEY}
 def fetch_data(animal_name):
     """
     Fetches the animals data for the animal 'animal_name'.
@@ -27,4 +28,4 @@ def fetch_data(animal_name):
     return req.json()
 
 
-print(fetch_data("turtle"))
+#print(fetch_data("turtle")) #this is here for testing

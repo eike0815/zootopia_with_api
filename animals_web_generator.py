@@ -2,7 +2,10 @@ import data_fetcher as d_f
 
 
 def bring_animals_to_html(list_of_cards):
-    """here the placeholder is replaced by the actual new animal list created in building_all_cards"""
+    """
+    here the placeholder is replaced by the actual new animal list
+    created in building_all_cards
+    """
     with open('animals_template.html',"r")as file:
       page = file.read()
     new_html=page.replace("__REPLACE_ANIMALS_INFO__", list_of_cards)
@@ -12,13 +15,20 @@ def bring_animals_to_html(list_of_cards):
 
 
 def errormassage(nonanimal):
+    """
+    in case the users input doesn´t exist,
+    this function prints it on the screen
+    """
     output = ''
-    output += f'<h2>The animal "{nonanimal}" does not exist.</h2>\n'
+    output += (f'<li class="cards__item "><center><h2>The animal "{nonanimal}" does not exist.</h2>'
+               f'<h2>At least not in this data bank.</h2></center></li>\n')
     print(bring_animals_to_html(output))
 
 
 def seralize_animal(obj):
-    """here every fox gets an own card written """
+    """
+    here every animal gets an own card written
+    """
     output = ''
     output += '<li class="cards__item">\n'
     try:
@@ -47,7 +57,9 @@ def seralize_animal(obj):
 
 
 def building_all_cards(cards):
-    """here we add together all animal cards to on file"""
+    """
+    here we add together all animal cards to on file
+    """
     output = ""
     for animal in range(len(cards)):
         output += seralize_animal(cards[animal])
@@ -55,6 +67,10 @@ def building_all_cards(cards):
 
 
 def main():
+    """
+    in the main is not only organised, that the functions work together,
+    it also organises error handling by wrong user input
+    """
     animal_name = input("Enter a name of an animal: ")
     animals_data = d_f.fetch_data(animal_name)
     if animals_data==[]:
